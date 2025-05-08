@@ -1,0 +1,103 @@
+import os
+os.getcwd()
+
+
+import pandas as pd
+df = pd.read_excel('/content/data.xlsx')
+df
+
+
+df.shape
+
+
+df.describe()
+
+
+df.head()
+
+
+df.tail()
+
+
+df.count()
+
+
+df.info()
+
+
+df.isnull()
+
+
+df.isnull().sum()
+
+
+print(True+True+True)
+
+
+df.dropna()
+
+
+df.fillna(0)
+
+
+df['class'].fillna('TE')
+
+
+df['marks'].fillna(df['marks'].mean())
+
+
+df['age'].fillna(df['age'].median())
+
+
+df['class'].value_counts()
+
+
+df['class'].fillna(df['class'].mode()[0])
+
+
+df.fillna(method='backfill')
+
+
+import numpy as np
+x=np.array([5,4,3,2,7,8,98,28])
+np.mean(x)
+
+
+np.median(x)
+
+
+import matplotlib.pyplot as plt
+plt.boxplot(x)
+
+
+df.plot.box()
+
+
+df.loc[6,'marks']=98.45
+df.plot.box()
+
+
+df.plot.hist()
+
+
+df['age'].plot.hist()
+
+
+x = df[['age','marks']]
+x.describe()
+
+
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
+x_scaled = scaler.fit_transform(x)
+
+
+pd.DataFrame(x_scaled).describe()
+
+
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+x_scaled = scaler.fit_transform(x)
+pd.DataFrame(x_scaled).describe()
+
+
