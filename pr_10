@@ -1,0 +1,65 @@
+import numpy as np
+import pandas as pd
+from numpy import array
+
+
+df = pd.read_csv("Iris.csv")
+
+
+df.head()
+
+
+column = len(list(df))
+column
+
+
+df.info()
+
+
+np.unique(df["Species"])
+array(['Iris-setosa', 'Iris-versicolor', 'Iris-virginica'], dtype=object)
+
+
+df.describe()
+
+
+import seaborn as sns
+import matplotlib
+import matplotlib.pyplot as plt
+#%matplotlib inline
+
+
+# Create subplots for histograms
+fig, axes = plt.subplots(2, 2, figsize=(16, 8))
+axes[0, 0].set_title("Distribution of First Column")
+axes[0, 0].hist(df["SepalLengthCm"])
+axes[0, 1].set_title("Distribution of Second Column")
+axes[0, 1].hist(df["SepalWidthCm"])
+axes[1, 0].set_title("Distribution of Third Column")
+axes[1, 0].hist(df["PetalLengthCm"])
+axes[1, 1].set_title("Distribution of Fourth Column")
+axes[1, 1].hist(df["PetalWidthCm"])
+plt.tight_layout()
+plt.show()  # Only one show() here, at the end
+
+
+data_to_plot = [df["SepalLengthCm"],df["SepalWidthCm"],df["PetalLengthCm"],df["PetalWidthCm"]]
+sns.set_style("whitegrid")
+
+
+fig = plt.figure(1, figsize=(12,8))
+# Creating an axes instance
+ax = fig.add_subplot(111)
+# Creating the boxplot
+bp = ax.boxplot(data_to_plot);
+
+
+sns.set_style("whitegrid")
+fig = plt.figure(figsize=(12, 8))
+ax = fig.add_subplot(111)
+# Boxplot
+ax.boxplot(data_to_plot, patch_artist=True, labels=["SepalLength", "SepalWidth", "PetalLength", "PetalWidth"])
+ax.set_title("Boxplot of Iris Dataset Features")
+plt.show()
+
+
